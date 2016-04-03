@@ -1,0 +1,9 @@
+elems:
+
+  - src: elems/(alsasound)$
+    dst: /etc/conf.d/<1>
+    only:
+      features:
+        - alsa
+
+# vim: set filetype=eruby.yaml :

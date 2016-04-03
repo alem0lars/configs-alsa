@@ -1,0 +1,3 @@
+alsa:
+  save_on_stop: true
+  restore_on_start: true

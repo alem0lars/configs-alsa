@@ -1,0 +1,55 @@
+# ─────────────────────────────────────────────────────────────────────────────┐
+#                                                                              │
+# File informations:                                                           │
+# - Name:    elems/alsasound.tt                                                │
+# - Summary: The alsasound service configuration.                              │
+# - Authors:                                                                   │
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              │
+#                                                                              │
+# Project informations:                                                        │
+#   - Homepage:        https://github.com/alem0lars/configs-alsa               │
+#   - Getting started: see README.md in the project root folder                │
+#                                                                              │
+# License: Apache v2.0 (see below)                                             │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+#                                                                              │
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  │
+# license agreements.  See the NOTICE file distributed with this work for      │
+# additional information regarding copyright ownership. The ASF licenses this  │
+# file to you under the Apache License, Version 2.0 (the "License"); you may   │
+# not use this file except in compliance with the License.                     │
+# You may obtain a copy of the License at                                      │
+#                                                                              │
+#   http://www.apache.org/licenses/LICENSE-2.0                                 │
+#                                                                              │
+# Unless required by applicable law or agreed to in writing, software          │
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    │
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             │
+# See the License for the specific language governing permissions and          │
+# limitations under the License.                                               │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+<% define_locals do
+  prefixed(:alsa) do
+    variable :restore_on_start, type: :bool
+    variable :save_on_stop,     type: :bool
+  end
+end -%>
+# ─────────────────────────────────────────────────────────────────────────────┘
+
+# RESTORE_ON_START:
+# Do you want to restore your mixer settings?  If not, your cards will be
+# muted.
+# no  - Do not restore state
+# yes - Restore state
+RESTORE_ON_START="<%= local!(:restore_on_start) ? :yes : :no %>"
+
+# SAVE_ON_STOP:
+# Do you want to save changes made to your mixer volumes when alsasound
+# stops?
+# no  - Do not save state
+# yes - Save state
+SAVE_ON_STOP="<%= local!(:save_on_stop) ? :yes : :no %>"
+
+# vim: set filetype=eruby.sh :
