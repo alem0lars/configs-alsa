@@ -31,7 +31,7 @@
 #                                                                              │
 # ─────────────────────────────────────────────────────────────────────────────┤
 <% define_locals do
-  prefixed(:alsa) do
+  prefixed(:"alsa.") do
     variable :restore_on_start, type: :bool
     variable :save_on_stop,     type: :bool
   end
